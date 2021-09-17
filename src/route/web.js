@@ -1,9 +1,12 @@
 import express from "express"
+import homeController from "../controllers/homeController"
 
 let router = express.Router()
 
 let webRouters = (app) => {
-    router.get('/', (req, res)=>{
+    router.get('/',homeController.getHomePage)
+    
+    router.get('/docter', (req, res)=>{
         return res.send('Hello world duyvo')
     })
     
