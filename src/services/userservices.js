@@ -11,7 +11,7 @@ let handleUserLogin = (email, password) => {
                 let user = await db.User.findOne({
                     attributes: ['email', 'password'], //gồm 2 trường email và password
                     where: { email: email }, //so sánh email
-
+                    //raw = true, //crash server, đang tìm cách fix-dùng để delete password
                 });
 
                 if (user) { //neu ton tai nguoi dung

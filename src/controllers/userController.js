@@ -13,8 +13,10 @@ let handleLogin = async (req, res) => {
     let userData = await userService.handleUserLogin(email, password);
     return res.status(200).json(
         {
+
             maloi: userData.maloi,
             thongbao: userData.thongbao,
+
             user: userData.user ? userData.user : { 'thong bao': 'Khong hien thi thong tin user' }
         }
     )
