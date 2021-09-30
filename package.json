@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/duyvo1609/booking#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.5",
@@ -35,8 +36,9 @@
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.12.10",
+    "install": "^0.13.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.13",
     "sequelize-cli": "^6.2.0"
   }
 }
