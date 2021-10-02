@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khởi tạo CRUD</title>
+</head>
+
+<body>
+    Thêm user
+    <form action="/post-crud" method="POST">
+        <div>
+            <label>Email</label>
+            <input type="email" name="email">
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <label>Họ</label>
+            <input type="text" name="firstname">
+        </div>
+        <div>
+            <label>Tên</label>
+            <input type="text" name="lastname">
+        </div>
+        <div>
+            <label>Địa chỉ</label>
+            <input type="text" name="address">
+        </div>
+        <div>
+            <label>Số điện thoại</label>
+            <input type="text" name="phonenumber">
+        </div>
+        <div>
+            <label>Giới tính</label>
+            <select name="gender">
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+        </div>
+        <div>
+            <label>Vai tró</label>
+            <select name="role">
+                <option value="0">Admin</option>
+                <option value="1">Bác sĩ</option>
+                <option value="2">Bệnh nhân</option>
+            </select>
+        </div>
+        <div>
+            <label>Chức danh</label>
+            <input type="text" name="position">
+        </div>
+        <button type="submit">Đăng kí</button>
+    </form>
+</body>
+
+</html>
