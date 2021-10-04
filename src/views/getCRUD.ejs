@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get CRUD</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <th>Person</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>Firstname</td>
+            <td>Lastname</td>
+            <td>Address</td>
+            <td>Phonenumber</td>
+            <td>gender</td>
+            <td>role id</td>
+            <td>position</td>
+
+        </tr>
+        <% for(var i=0; i < dataTable.length; i++) { %>
+            <tr>
+                <td>
+                    <%= dataTable[i].email %>
+                </td>
+                <td>
+                    <%= data[i].firstName %>
+                </td>
+                <td>
+                    <%= data[i].lastname %>
+                </td>
+                <td>
+                    <%= data[i].address %>
+                </td>
+                <td>
+                    <%= data[i].phonenumber %>
+                </td>
+                <td>
+                    <%= data[i].gender %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>

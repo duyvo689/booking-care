@@ -1,5 +1,5 @@
 import db from "../models/index"; //import database
-import user from "../models/user";
+import User from "../models/user";
 import bcrypt from 'bcryptjs';
 let handleUserLogin = (email, password) => {
     return new Promise(async (resolve, reject) => {
@@ -11,12 +11,13 @@ let handleUserLogin = (email, password) => {
                 let user = await db.User.findOne({
                     attributes: ['email', 'password'], //gồm 2 trường email và password
                     where: { email: email }, //so sánh email
-                    //raw = true, //crash server, đang tìm cách fix-dùng để delete password
+                    raw: true, //crash server, đang tìm cách fix-dùng để delete password
+                    delete: 'password', //không trả về password phòng ngừa bị hack
                 });
 
                 if (user) { //neu ton tai nguoi dung
-                    //let check = await bcrypt.compareSync("password", user.password); //check password
-                    let check = true;
+                    let check = await bcrypt.compareSync(password, user.password); //so sánh password
+
                     if (check) {
                         userData.maloi = 0;
                         userData.thongbao = 'Thanh cong';
@@ -49,16 +50,7 @@ let handleUserLogin = (email, password) => {
 
 
 }
-//kiểm tra password của người dùng
-let checkuserpassword = () => {
-    return new Promise(async (resolve, reject) => {
-        try {
 
-        } catch (e) {
-            reject(e);
-        }
-    })
-}
 //kiểm tra email của người dùng
 let checkuseremail = (useremail) => {
     return new Promise(async (resolve, reject) => {
