@@ -9,10 +9,7 @@
 
 <body>
     <table border="1">
-        <tr>
-            <th>Person</th>
-            <th>Age</th>
-        </tr>
+
         <tr>
             <td>email</td>
             <td>Firstname</td>
@@ -24,25 +21,32 @@
             <td>position</td>
 
         </tr>
-        <% for(var i=0; i < dataTable.length; i++) { %>
+        <% for(let i=0; i < dataTable.length; i++) { %>
             <tr>
                 <td>
                     <%= dataTable[i].email %>
                 </td>
                 <td>
-                    <%= data[i].firstName %>
+                    <%= dataTable[i].firstName %>
                 </td>
                 <td>
-                    <%= data[i].lastname %>
+                    <%= dataTable[i].lastName %>
                 </td>
                 <td>
-                    <%= data[i].address %>
+                    <%= dataTable[i].address %>
                 </td>
                 <td>
-                    <%= data[i].phonenumber %>
+                    <%= dataTable[i].phoneNumber %>
+                </td>
+
+                <td>
+                    <%= dataTable[i].gender %>
                 </td>
                 <td>
-                    <%= data[i].gender %>
+                    <%= dataTable[i].roleId %>
+                </td>
+                <td>
+                    <%= dataTable[i].positionId %>
                 </td>
             </tr>
             <% } %>
