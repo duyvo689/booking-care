@@ -14,6 +14,7 @@ let webRouters = (app) => {
     router.post('/api/login', userController.handleLogin);
     router.get('/crud', homeController.getCRUD);
     router.post('/post-crud', homeController.postCRUD);
+    router.get('/get-crud', homeController.getdisplayCRUD);
     return app.use("/", router)
 
 
