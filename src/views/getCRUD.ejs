@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get CRUD</title>
 </head>
+<style>
+    .btn-delete {
+        background-color: red;
+    }
+
+    .btn-edit {
+        background-color: orange;
+    }
+</style>
 
 <body>
     <table border="1">
@@ -48,6 +57,13 @@
                 <td>
                     <%= dataTable[i].positionId %>
                 </td>
+                <td>
+                    <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn-edit" type="button">Sua</a>
+                </td>
+                <td>
+                    <a class="btn-delete" type="button">Xoa</a>
+                </td>
+
             </tr>
             <% } %>
     </table>

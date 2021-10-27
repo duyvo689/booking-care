@@ -6,7 +6,7 @@ let createNewUser = async (data) => {
         try {
             let hashPassword = await hashUserpassword(data.password); //truyền biến password vào hàm để thực hiện hash
             await db.User.create({
-
+                id: data.id,
                 email: data.email,
                 password: hashPassword,
                 firstName: data.firstName,
@@ -41,7 +41,7 @@ let hashUserpassword = (password) => {
 let getallUser = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let users = db.User.findAll({
+            let users = db.User.findAll({//load ra tất cả user trong db
                 raw: true,
             });
             resolve(users);
@@ -49,7 +49,55 @@ let getallUser = () => {
         catch (e) { reject(e); }
     })
 }
+let getUserInforById = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { id: userId }, //tìm user mà id =UserId
+                raw: true,
+            });
+            if (user) {
+                resolve(user); //trả về thông tin user
+            }
+            else {
+                resolve([]); //trả về mảng rỗng nếu không tìm được
+            }
+        }
+
+        catch (e) {
+            reject(e);
+        }
+    })
+}
+let updateUserData = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { id: data.id } //tìm user có id bằng id của user được truyền vào
+            })
+            if (user) {
+                user.firstName = data.firstName;
+                user.lastName = data.lastName;
+                user.address = data.address;
+                user.phoneNumber = data.phoneNumber;
+                //gán dữ liệu bằng dữ liệu mới
+                await user.save();
+                let allUsers = await db.User.findAll();//tìm tất cả user
+                resolve(allUsers);//trả về danh sách các user
+            }
+            else {
+                resolve();
+            }
+            await db.User.update({})//update
+        }
+        catch (e) {
+            reject(e);
+        }
+    })
+}
 module.exports = {
     createNewUser: createNewUser,
     getallUser: getallUser,
+    getUserInforById: getUserInforById,
+    updateUserData: updateUserData,
 }

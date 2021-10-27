@@ -25,15 +25,38 @@ let postCRUD = async (req, res) => {
 let getdisplayCRUD = async (req, res) => {
 
     let data = await CRUDServices.getallUser();
-    console.log(data);
-    return res.render('getCRUD.ejs',
-        { dataTable: data, }
-    )
+
+    return res.render('getCRUD.ejs', { dataTable: data }) // gán biến dataTable cho data + render file giao diện getCRUD
 
 };
+let getEditCRUD = async (req, res) => {
+    let userId = req.query.id;
+    if (userId) {
+        let userData = await CRUDServices.getUserInforById(userId); //nếu tồn tại userId thì trả về thông tin của user đó
+
+        return res.render('editCRUD.ejs', {
+            user: userData,// gán giá trị biến userData cho biến user
+        });
+
+    }
+    else {
+        return res.send('Không tìm thấy user này')
+    }
+
+
+}
+let putCRUD = async (req, res) => {
+    let data = req.body;
+    let allUsers = await CRUDServices.updateUserData(data);
+    return res.render('getCRUD.ejs', {
+        dataTable: allUsers //gán biến allUsers bằng biến dataTable trong file getCRUD.ejs
+    });
+}
 module.exports = {
     getHomePage: getHomePage,
     getCRUD: getCRUD,
     postCRUD: postCRUD,
     getdisplayCRUD: getdisplayCRUD,
+    getEditCRUD: getEditCRUD,
+    putCRUD: putCRUD,
 }

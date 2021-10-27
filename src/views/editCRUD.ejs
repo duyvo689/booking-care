@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa thông tin user</title>
+</head>
+
+<body>
+    Chỉnh sửa thông tin user
+    <form action="/put-crud" method="POST">
+        <div>
+            <label>ID</label>
+            <input type="text" name="id" value="<%=user.id%>" readonly>
+        </div>
+        <div>
+            <label>Họ</label>
+            <input type="text" name="firstName" value="<%=user.firstName%>">
+
+        </div>
+        <div>
+            <label>Tên</label>
+            <input type=" text" name="lastName" value="<%=user.lastName%>">
+        </div>
+        <div>
+            <label>Địa chỉ</label>
+            <input type="text" name="address" value="<%=user.address%>">
+        </div>
+        <div>
+            <label>Số điện thoại</label>
+            <input type="text" name="phoneNumber" value="<%=user.phoneNumber%>">
+        </div>
+
+
+        <button type="submit">Chỉnh sửa</button>
+    </form>
+</body>
+
+</html>
