@@ -19,7 +19,6 @@ let getCRUD = (req, res) => {
 let postCRUD = async (req, res) => {
 
     await CRUDServices.createNewUser(req.body);
-    console.log(req.body);
     return res.send('Đã thêm user');
 }
 let getdisplayCRUD = async (req, res) => {
@@ -52,6 +51,15 @@ let putCRUD = async (req, res) => {
         dataTable: allUsers //gán biến allUsers bằng biến dataTable trong file getCRUD.ejs
     });
 }
+
+let deleteCRUD = async (req, res) => {
+    let id = req.query.id;
+    if (id) {
+        await CRUDServices.deleteUserById(id);
+        return res.send('Đã xóa thông tin user')
+    }
+    else return res.send('Không tìm thấy thông tin user')
+}
 module.exports = {
     getHomePage: getHomePage,
     getCRUD: getCRUD,
@@ -59,4 +67,5 @@ module.exports = {
     getdisplayCRUD: getdisplayCRUD,
     getEditCRUD: getEditCRUD,
     putCRUD: putCRUD,
+    deleteCRUD: deleteCRUD,
 }
